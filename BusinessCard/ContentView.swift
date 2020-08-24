@@ -10,7 +10,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        
+        NavigationView {
+            
+            ScrollView(.vertical, showsIndicators: false){
+                VStack {
+                    ForEach(User.users) {
+                        user in
+                        NavigationLink(destination: VisitorInfoView(user: user)) {
+                            
+                            CardView(user: user)
+                                .padding(.vertical)
+                        }
+                    }
+                }
+            }
+        }.navigationBarTitle("Quick card")
     }
 }
 
@@ -19,3 +34,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
